@@ -18,6 +18,9 @@ struct Vino
     int dia;
     int mes;
     int anio;
+    string NombreProveedor;
+    int NumeroProveedor;
+    int DNIProveedor;
 };
 
 int main()
@@ -73,7 +76,8 @@ int main()
                 // Validar si la cantidad es correcta
                 if (cantidad > datos[indice].cantidades)
                 {
-                    cout << "No hay suficiente existencia" << endl;
+                    cout << "\nNo hay suficiente existencia\n" << endl;
+                    std::this_thread::sleep_for(2000ms);
                 }
                 else
                 {
@@ -100,12 +104,15 @@ int main()
         }
         if (eleccion == "3")
         {
-            string opcion = "";
+            int opcion;
             cout << endl
                  << "1. Agregar Producto\n2. Quitar producto\n3. Salir\n Seleccione: ";
             cin >> opcion;
-            if (opcion == "1")
+            switch (opcion)
             {
+            case 1:
+                bool repetido = false;
+                string txt;
                 cout << endl
                      << "Listado de vinos: " << endl
                      << endl;
@@ -118,32 +125,32 @@ int main()
                 datos[contador].codigo = codigos;
                 cout << "Igrese los datos solicitados:" << endl;
                 cout << "Nombre: " << endl;
-                cin >> datos[contador].nombre;
-                cout << "Marca: " << endl;
-                cin >> datos[contador].marca;
-                cout << "Precio: " << endl;
-                cin >> datos[contador].precio;
-                cout << "Cantidad: " << endl;
-                cin >> datos[contador].cantidades;
-                cout << "Tipo: " << endl;
-                cin >> datos[contador].tipo;
-                cout << "Fecha de fabricacion: " << endl;
-                cout << "Dia: " << endl;
-                cin >> datos[contador].dia;
-                cout << "Mes: " << endl;
-                cin >> datos[contador].mes;
-                cout << "Año: " << endl;
-                cin >> datos[contador].anio;
+                cin >> txt;
+                for (int i = 0; i < contador; i++)
+                {
+                    if (datos[i].nombre == txt)
+                {
+                    cout <<"Un vino con ese nombre ya ha sido registrado en el sistema."<<endl;
+                    repetido = true;
+                    std::this_thread::sleep_for(1000ms);
+                    cout<<"Vuelva a ingresar un valor: "<<endl;
+                    std::this_thread::sleep_for(1500ms);
+                }
+                }
+                if (repetido = false)
+                {
+                    
+                }
+                else{
+                    
+                }
+                cout<<repetido;
+                break;
 
-                cout << "========================================" << endl;
-                cout << "VINO " << datos[contador].nombre << " AGREGADO" << endl;
-                cout << "========================================" << endl;
-
-                std::this_thread::sleep_for(1500ms);
-            }
-            if (opcion == "2")
-            {
-                cout << endl<< "Listado de vinos: " << endl<< endl;
+            /*case 2:
+                cout << endl
+                     << "Listado de vinos: " << endl
+                     << endl;
                 for (int i = 0; i < contador; i++)
                 {
                     cout << datos[i].nombre << endl;
@@ -154,9 +161,12 @@ int main()
                 cin >> rm;
                 for (int i = 0; i <= contador; i++)
                 {
-                    if (datos[i].nombre == rm){
+                    if (datos[i].nombre == rm)
+                    {
                     }
                 }
+                break;*/
+
             }
         }
     }
