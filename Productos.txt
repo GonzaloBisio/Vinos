@@ -1,6 +1,0 @@
-Impresion del vino codigo: 1
-Nombre: Alma Mora
-Marca: Malbec
-Tipo: Tinto
-Precio: 615
-Cantidad en stock: 1493

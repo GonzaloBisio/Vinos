@@ -38,23 +38,25 @@ struct Vino
     Fecha fecha;
     Ingreso ingreso;
     Proveedor proveedor;
-    bool existe = true;
+    bool existe;
+    int venta = precio + (precio * 0.15);
 };
 
 int main()
 {
+
     Vino datos[50];
 
-    datos[0] = {"1", "Malbec", "Alma Mora", 1493, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Antonio", "3515083581", "44195188"}};
-    datos[1] = {"2", "Malbec", "Portillo", 2042, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}};
-    datos[2] = {"3", "Malbec", "Colón", 3453, "Tinto", 300, {18, 7, 2012}, {12, 2021}, {"Juan", "3515083581", "44195188"}};
-    datos[3] = {"4", "Malbec", "Dada", 2342, "Tinto", 554, {18, 7, 2012}, {12, 2021}, {"Beto", "3515083581", "44195188"}};
-    datos[4] = {"5", "Torrentes", "Elementos", 1042, "Blanco", 615, {18, 7, 2012}, {12, 2021}, {"Lucas", "3515083581", "44195188"}};
-    datos[5] = {"6", "Chenin", "Santa Julia", 562, "Blanco", 820, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}};
-    datos[6] = {"7", "Sweet", "Fuzion", 550, "Blanco", 800, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}};
-    datos[7] = {"8", "Red Blend", "Emilia", 562, "Rosado", 650, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}};
-    datos[8] = {"9", "La Celia", "Rose", 403, "Rosado", 950, {18, 7, 2012}, {12, 2021}, {"Manuel", "3515083581", "44195188"}};
-    datos[9] = {"10", "Red Blend", "Aime", 1023, "Rosado", 820, {18, 7, 2012}, {12, 2021}, {"Mariano", "3515083581", "44195188"}};
+    datos[0] = {"1", "Malbec", "Alma Mora", 1493, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Antonio", "3515083581", "44195188"}, true};
+    datos[1] = {"2", "Malbec", "Portillo", 2042, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}, true};
+    datos[2] = {"3", "Malbec", "Colón", 3453, "Tinto", 300, {18, 7, 2012}, {12, 2021}, {"Juan", "3515083581", "44195188"}, true};
+    datos[3] = {"4", "Malbec", "Dada", 2342, "Tinto", 554, {18, 7, 2012}, {12, 2021}, {"Beto", "3515083581", "44195188"}, true};
+    datos[4] = {"5", "Torrentes", "Elementos", 1042, "Blanco", 615, {18, 7, 2012}, {12, 2021}, {"Lucas", "3515083581", "44195188"}, true};
+    datos[5] = {"6", "Chenin", "Santa Julia", 562, "Blanco", 820, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}, true};
+    datos[6] = {"7", "Sweet", "Fuzion", 550, "Blanco", 800, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}, true};
+    datos[7] = {"8", "Red Blend", "Emilia", 562, "Rosado", 650, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}, true};
+    datos[8] = {"9", "La Celia", "Rose", 403, "Rosado", 950, {18, 7, 2012}, {12, 2021}, {"Manuel", "3515083581", "44195188"}, true};
+    datos[9] = {"10", "Red Blend", "Aime", 1023, "Rosado", 820, {18, 7, 2012}, {12, 2021}, {"Mariano", "3515083581", "44195188"}, true};
 
     int contador = 9;
     int codigos = contador + 1;
@@ -164,20 +166,30 @@ int main()
         if (eleccion == "4")
         {
             string c;
-            cout<< "Ingrese el codigo del vino: "<<endl;
-            cin>>c;
+            cout << "\nVinos catalogados:\n " << endl;
             for (int i = 0; i <= contador; i++)
-            {    
+            {
+                cout << datos[i].codigo << " (" << datos[i].nombre << ") " << endl;
+                cout << "_____________________" << endl;
+            }
+            cout << "Ingrese el codigo del vino: " << endl;
+            cin >> c;
+            for (int i = 0; i <= contador; i++)
+            {
                 if (datos[i].codigo == c)
                 {
                     ofstream fw("Impresión de producto.txt", std::ofstream::out);
-                    if (fw.is_open()){
-                        fw <<"Impresion del vino codigo: "<< datos[i].codigo<<endl;
-                        fw <<"Nombre: " <<datos[i].nombre<< "\n";
-                        fw <<"Marca: " <<datos[i].marca<< "\n";
-                        fw <<"Tipo: " <<datos[i].tipo<< "\n";
-                        fw <<"Precio: " <<datos[i].precio<< "\n";
-                        fw <<"Cantidad en stock: " <<datos[i].cantidades<< "\n";
+                    if (fw.is_open())
+                    {
+                        fw << "Impresion del vino codigo: " << datos[i].codigo << endl;
+                        fw << "Nombre: " << datos[i].nombre << "\n";
+                        fw << "Marca: " << datos[i].marca << "\n";
+                        fw << "Tipo: " << datos[i].tipo << "\n";
+                        fw << "Precio de venta: " << datos[i].venta << "\n";
+                        fw << "Cantidad en stock: " << datos[i].cantidades << "\n";
+
+                        cout << "\nDatos impresos!" << endl;
+                        std::this_thread::sleep_for(2500ms);
                         fw.close();
                     }
                     else
@@ -185,68 +197,83 @@ int main()
                 };
             }
         }
-        
+
         if (eleccion == "5")
         {
             string p;
-            cout<<"\nProveedores catalogados:\n "<<endl;
+            cout << "\nProveedores catalogados:\n " << endl;
             for (int i = 0; i <= contador; i++)
             {
-                cout<<datos[i].proveedor.nombre<<" ("<<datos[i].nombre<<") "<<endl;
-                cout<<"_____________________"<<endl;
+                cout << datos[i].proveedor.nombre << " (" << datos[i].nombre << ") " << endl;
+                cout << "_____________________" << endl;
             }
-            
-            cout<<"Ingrese el nombre del proveedor"<<endl;
-            cin>>p;
-            for (int i = 0; i <= contador; i++){
-                if (datos[i].proveedor.nombre==p)
+
+            cout << "Ingrese el nombre del proveedor" << endl;
+            cin >> p;
+            for (int i = 0; i <= contador; i++)
+            {
+                if (datos[i].proveedor.nombre == p)
                 {
                     ofstream fw("Datos proveedor.txt", std::ofstream::out);
-                    if (fw.is_open()){
-                        fw <<"Impresion del proveedor: "<< datos[i].proveedor.nombre<<endl;
-                        fw <<"Nombre: " <<datos[i].proveedor.nombre<< "\n";
-                        fw <<"Número de teléfono: " <<datos[i].proveedor.numero<< "\n";
-                        fw <<"Número de DNI: " <<datos[i].proveedor.dni<< "\n";
+                    if (fw.is_open())
+                    {
+                        fw << "Impresion del proveedor: " << datos[i].proveedor.nombre << endl;
+                        fw << "Nombre: " << datos[i].proveedor.nombre << "\n";
+                        fw << "Número de teléfono: " << datos[i].proveedor.numero << "\n";
+                        fw << "Número de DNI: " << datos[i].proveedor.dni << "\n";
                         fw.close();
 
-                        cout<<"\nDatos impresos!"<<endl;
+                        cout << "\nDatos impresos!" << endl;
                         std::this_thread::sleep_for(2500ms);
-                    
                     }
                     else
                         cout << "Hubo un problema al abrir el archivo";
                 }
             }
-        }      
-        
-        if (eleccion=="6") //Not working
+        }
+
+        if (eleccion == "6")
         {
-            cout<<"Generando archivo de suma de productos...";
+            int suma;
+            cout << "Generando archivo de suma de productos...";
             ofstream fw("Productos.txt", std::ofstream::out);
+
             for (int i = 0; i < contador; i++)
             {
-                if (fw.is_open()){
-                    fw <<"Impresion del vino codigo: "<< datos[i].codigo<<endl;
-                    fw <<"Nombre: " <<datos[i].nombre<< "\n";
-                    fw <<"Marca: " <<datos[i].marca<< "\n";
-                    fw <<"Tipo: " <<datos[i].tipo<< "\n";
-                    fw <<"Precio: " <<datos[i].precio<< "\n";
-                    fw <<"Cantidad en stock: " <<datos[i].cantidades<< "\n";
-                    fw.close();
-                }
-                else
-                cout << "Hubo un problema al abrir el archivo";
-            };
+                if (datos[i].existe)
+                {
+                    if (fw.is_open())
+                    {
+                        fw << "Impresion del vino codigo: " << datos[i].codigo << endl;
+                        fw << "Nombre: " << datos[i].nombre << "\n";
+                        fw << "Marca: " << datos[i].marca << "\n";
+                        fw << "Tipo: " << datos[i].tipo << "\n";
+                        fw << "Precio de venta: " << datos[i].venta << "\n";
+                        fw << "Cantidad en stock: " << datos[i].cantidades << "\n";
+                        fw << "______________________________" << endl;
+                        suma += datos[i].venta;
+                    }
+                    else
+                        cout << "Hubo un problema al abrir el archivo";
+                };
             }
-            
+            fw << "La suma de precio de los vinos es: " << suma << endl;
+
+            cout << "\nDatos impresos!" << endl;
+            std::this_thread::sleep_for(2500ms);
         }
-        
 
         if (eleccion == "7")
         {
             string rm;
             bool repetido = false;
-            string txt;
+            string nombre_ingresado;
+            string marca_ingresada;
+            int cantidad_ingresada;
+            int precio_ingresado;
+            bool estado = true;
+            int i = 0;
+
             int opcion;
             string c;
             int p;
@@ -254,8 +281,10 @@ int main()
                  << "_________________________________________"
                  << "\n1. Agregar Producto\n2. Quitar producto\n3. Modificar Precio \n4. Modificar fecha de ingreso\n5. Salir \nSeleccione: " << endl;
             cin >> opcion;
+
             switch (opcion)
             {
+
             case 1:
                 cout << endl
                      << "Listado de vinos: " << endl
@@ -265,23 +294,46 @@ int main()
                     cout << datos[i].nombre << endl;
                     cout << "____________" << endl;
                 }
-                contador++;
-                datos[contador].codigo = codigos;
+
                 cout << "Igrese los datos solicitados:" << endl;
                 cout << "Nombre: " << endl;
-                cin >> txt;
-                for (int i = 0; i <= contador; i++)
+                cin >> nombre_ingresado;
+
+                while (estado)
                 {
-                    if (datos[i].nombre == txt)
+                    if (datos[i].nombre == nombre_ingresado && datos[i].existe)
                     {
                         cout << "Un vino con ese nombre ya ha sido registrado en el sistema." << endl;
-                        repetido = true;
                         std::this_thread::sleep_for(1000ms);
                         cout << "Vuelva a ingresar un valor: " << endl;
+                        cin >> nombre_ingresado;
                         std::this_thread::sleep_for(1500ms);
+
+                        estado = false;
+                        i = 0;
                     }
+                    else
+                    {
+                        datos[i].nombre = nombre_ingresado;
+
+                        cout << "Marca: " << endl;
+                        cin >> marca_ingresada;
+                        datos[i].marca = marca_ingresada;
+
+                        cout << "Precio: " << endl;
+                        cin >> precio_ingresado;
+                        datos[i].precio = precio_ingresado;
+
+                        cout << "Cantidad: " << endl;
+                        cin >> cantidad_ingresada;
+                        datos[i].cantidades = cantidad_ingresada;
+
+                        datos[i].existe = true;
+                        contador++;
+                    }
+                    i++;
                 }
-                cout << repetido;
+
                 break;
 
             case 2:
@@ -305,7 +357,7 @@ int main()
                 }
                 break;
 
-            case 3:                
+            case 3:
                 cout << "Ingrese el código del producto: " << endl;
                 cin >> c;
                 for (int i = 0; i <= contador; i++)
@@ -323,26 +375,24 @@ int main()
                 break;
 
             case 4:
-                cout<<"Ingrese el codigo del vino a modificar su fecha de ingreso: "<<endl;
-                cin>>c;
+                cout << "Ingrese el codigo del vino a modificar su fecha de ingreso: " << endl;
+                cin >> c;
 
                 for (int i = 0; i <= contador; i++)
                 {
                     if (datos[i].codigo == c)
                     {
-                        cout << "Fecha de ingreso al supermercado de "<<datos[i].nombre<<"\nMes de ingreso: " << datos[i].ingreso.mes << "\nAño: " << datos[i].ingreso.anio << endl;
-                        cout << "Ingrese la nueva fecha de ingreso: "<< endl;
-                        cout << "Mes de ingreso: "<<endl;
+                        cout << "Fecha de ingreso al supermercado de " << datos[i].nombre << "\nMes de ingreso: " << datos[i].ingreso.mes << "\nAño: " << datos[i].ingreso.anio << endl;
+                        cout << "Ingrese la nueva fecha de ingreso: " << endl;
+                        cout << "Mes de ingreso: " << endl;
                         cin >> datos[i].ingreso.mes;
-                        cout << "Año de ingreso: "<<endl;
+                        cout << "Año de ingreso: " << endl;
                         cin >> datos[i].ingreso.anio;
-                        cout << "Nueva fecha de ingreso del vino " << datos[i].nombre << ": " << datos[i].ingreso.mes<<"/"<<datos[i].ingreso.anio << endl;
+                        cout << "Nueva fecha de ingreso del vino " << datos[i].nombre << ": " << datos[i].ingreso.mes << "/" << datos[i].ingreso.anio << endl;
                         std::this_thread::sleep_for(3000ms);
                     }
                 }
-                
             }
         }
     }
-
-
+}
