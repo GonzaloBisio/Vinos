@@ -1,0 +1,71 @@
+Impresion del vino codigo: 1
+Nombre: Helios
+Marca: Frey
+Tipo: Tinto
+Precio de venta: 707
+Cantidad en stock: 23
+______________________________
+Impresion del vino codigo: 2
+Nombre: Portillo
+Marca: Malbec
+Tipo: Tinto
+Precio de venta: 707
+Cantidad en stock: 2042
+______________________________
+Impresion del vino codigo: 3
+Nombre: Colón
+Marca: Malbec
+Tipo: Tinto
+Precio de venta: 345
+Cantidad en stock: 3453
+______________________________
+Impresion del vino codigo: 4
+Nombre: Dada
+Marca: Malbec
+Tipo: Tinto
+Precio de venta: 637
+Cantidad en stock: 2342
+______________________________
+Impresion del vino codigo: 5
+Nombre: Elementos
+Marca: Torrentes
+Tipo: Blanco
+Precio de venta: 707
+Cantidad en stock: 1042
+______________________________
+Impresion del vino codigo: 6
+Nombre: Santa Julia
+Marca: Chenin
+Tipo: Blanco
+Precio de venta: 943
+Cantidad en stock: 562
+______________________________
+Impresion del vino codigo: 7
+Nombre: Fuzion
+Marca: Sweet
+Tipo: Blanco
+Precio de venta: 920
+Cantidad en stock: 550
+______________________________
+Impresion del vino codigo: 8
+Nombre: Emilia
+Marca: Red Blend
+Tipo: Rosado
+Precio de venta: 747
+Cantidad en stock: 562
+______________________________
+Impresion del vino codigo: 9
+Nombre: Rose
+Marca: La Celia
+Tipo: Rosado
+Precio de venta: 1092
+Cantidad en stock: 403
+______________________________
+Impresion del vino codigo: 10
+Nombre: Aime
+Marca: Red Blend
+Tipo: Rosado
+Precio de venta: 943
+Cantidad en stock: 1023
+______________________________
+La suma de precio de los vinos es: 7748

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <array>
 #include <chrono>
 #include <thread>
 
@@ -42,21 +41,97 @@ struct Vino
     int venta = precio + (precio * 0.15);
 };
 
+string busquedaNombre()
+{
+    string nombre;
+    while (true)
+    {
+        cin >> nombre;
+        if (nombre.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
+            std::string::npos)
+        {
+            return nombre;
+            break;
+        }
+        cout << "Por favor ingrese un nombre sin numeros ni caracteres especiales: " << endl;
+    }
+}
+
+string codeIngreso()
+{
+    string cod;
+    while (true)
+    {
+        cin >> cod;
+        if (cod.find_first_not_of("1") == std::string::npos)
+        {
+            return cod;
+            break;
+        }
+        cout << "Por favor ingrese un codigo contemplado en el stock: " << endl;
+    }
+}
+
+int mesIngreso()
+{
+    int mes;
+    while (true)
+    {
+        cin >> mes;
+        if (mes <= 12 && mes >= 0)
+        {
+            return mes;
+            break;
+        }
+        cout << "Ingrese un mes del 1 al 12" << endl;
+    }
+}
+
+int anioIngreso()
+{
+    int anio;
+    while (true)
+    {
+        cin >> anio;
+        if (anio < 2022 && anio > 2000)
+        {
+            return anio;
+            break;
+        }
+        cout << "Ingrese un anio del 2000 al 2022" << endl;
+    }
+}
+
+int integerPositivo(){
+    int p;
+    while (true)
+    {
+        cin >>p;
+        if (p>=0)
+        {
+            return p;
+            break;
+        }
+        cout<<" Ingrese un valor positvio porfavor "<<endl;
+    }
+    
+}
+
 int main()
 {
 
     Vino datos[50];
 
-    datos[0] = {"1", "Malbec", "Alma Mora", 1493, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Antonio", "3515083581", "44195188"}, true};
-    datos[1] = {"2", "Malbec", "Portillo", 2042, "Tinto", 615, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}, true};
-    datos[2] = {"3", "Malbec", "Colón", 3453, "Tinto", 300, {18, 7, 2012}, {12, 2021}, {"Juan", "3515083581", "44195188"}, true};
-    datos[3] = {"4", "Malbec", "Dada", 2342, "Tinto", 554, {18, 7, 2012}, {12, 2021}, {"Beto", "3515083581", "44195188"}, true};
-    datos[4] = {"5", "Torrentes", "Elementos", 1042, "Blanco", 615, {18, 7, 2012}, {12, 2021}, {"Lucas", "3515083581", "44195188"}, true};
-    datos[5] = {"6", "Chenin", "Santa Julia", 562, "Blanco", 820, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}, true};
-    datos[6] = {"7", "Sweet", "Fuzion", 550, "Blanco", 800, {18, 7, 2012}, {12, 2021}, {"Jose", "3515083581", "44195188"}, true};
-    datos[7] = {"8", "Red Blend", "Emilia", 562, "Rosado", 650, {18, 7, 2012}, {12, 2021}, {"Rodrigo", "3515083581", "44195188"}, true};
-    datos[8] = {"9", "La Celia", "Rose", 403, "Rosado", 950, {18, 7, 2012}, {12, 2021}, {"Manuel", "3515083581", "44195188"}, true};
-    datos[9] = {"10", "Red Blend", "Aime", 1023, "Rosado", 820, {18, 7, 2012}, {12, 2021}, {"Mariano", "3515083581", "44195188"}, true};
+    datos[0] = {"1", "Malbec", "Alma Mora", 1493, "Tinto", 615, {18, 7, 2012}, {12, 2015}, {"Antonio", "3515083581", "44195188"}, true};
+    datos[1] = {"2", "Malbec", "Portillo", 2042, "Tinto", 615, {18, 7, 2012}, {12, 2015}, {"Rodrigo", "3515083581", "44195188"}, true};
+    datos[2] = {"3", "Malbec", "Colón", 3453, "Tinto", 300, {18, 7, 2012}, {12, 2015}, {"Juan", "3515083581", "44195188"}, true};
+    datos[3] = {"4", "Malbec", "Dada", 2342, "Tinto", 554, {18, 7, 2012}, {12, 2015}, {"Beto", "3515083581", "44195188"}, true};
+    datos[4] = {"5", "Torrentes", "Elementos", 1042, "Blanco", 615, {18, 7, 2012}, {12, 2015}, {"Lucas", "3515083581", "44195188"}, true};
+    datos[5] = {"6", "Chenin", "Santa Julia", 562, "Blanco", 820, {18, 7, 2012}, {12, 2015}, {"Jose", "3515083581", "44195188"}, true};
+    datos[6] = {"7", "Sweet", "Fuzion", 550, "Blanco", 800, {18, 7, 2012}, {12, 2015}, {"Jose", "3515083581", "44195188"}, true};
+    datos[7] = {"8", "Red Blend", "Emilia", 562, "Rosado", 650, {18, 7, 2012}, {12, 2015}, {"Rodrigo", "3515083581", "44195188"}, true};
+    datos[8] = {"9", "La Celia", "Rose", 403, "Rosado", 950, {18, 7, 2012}, {12, 2015}, {"Manuel", "3515083581", "44195188"}, true};
+    datos[9] = {"10", "Red Blend", "Aime", 1023, "Rosado", 820, {18, 7, 2012}, {12, 2015}, {"Mariano", "3515083581", "44195188"}, true};
 
     int contador = 9;
     int codigos = contador + 1;
@@ -85,6 +160,7 @@ int main()
         // Si elige 1, entonces solicitar número de artículo y cantidad
         if (eleccion == "1")
         {
+
             int numeroArticulo;
             cout << "Ingrese el número de artículo: ";
             cin >> numeroArticulo;
@@ -128,26 +204,33 @@ int main()
                 std::this_thread::sleep_for(2500ms);
             }
         }
+
         if (eleccion == "2")
         {
             string prov;
+            bool x = true;
             cout << "Ingrese el nombre del proveedor" << endl;
-            cin >> prov;
+            prov = busquedaNombre();
             for (int i = 0; i <= contador; i++)
             {
                 if (datos[i].proveedor.nombre == prov)
                 {
                     cout << datos[i].nombre << endl;
                     cout << "____________" << endl;
+                    x = false;
                 }
             }
-            std::this_thread::sleep_for(2500ms);
+            if (x = true)
+            {
+                cout<<"Ningun proveedor registrado a ese nombre" <<endl;
+            }
+            
+            std::this_thread::sleep_for(1500ms);
         }
         if (eleccion == "3")
         {
-            string n;
             cout << "Ingrese el nombre del vino" << endl;
-            cin >> n;
+            string n = busquedaNombre();
             for (int i = 0; i <= contador; i++)
             {
                 if (datos[i].nombre == n)
@@ -185,7 +268,8 @@ int main()
                         fw << "Nombre: " << datos[i].nombre << "\n";
                         fw << "Marca: " << datos[i].marca << "\n";
                         fw << "Tipo: " << datos[i].tipo << "\n";
-                        fw << "Precio de venta: " << datos[i].venta << "\n";
+                        fw << "Precio de venta: " << datos[i].precio << "\n";
+                        fw << "Fecha de Ingreso: " << datos[i].ingreso.mes << "/" << datos[i].ingreso.anio << "\n";
                         fw << "Cantidad en stock: " << datos[i].cantidades << "\n";
 
                         cout << "\nDatos impresos!" << endl;
@@ -273,6 +357,8 @@ int main()
             int precio_ingresado;
             bool estado = true;
             int i = 0;
+            int x;
+            int y;
 
             int opcion;
             string c;
@@ -297,7 +383,7 @@ int main()
 
                 cout << "Igrese los datos solicitados:" << endl;
                 cout << "Nombre: " << endl;
-                cin >> nombre_ingresado;
+                nombre_ingresado = busquedaNombre();
 
                 while (estado)
                 {
@@ -308,8 +394,6 @@ int main()
                         cout << "Vuelva a ingresar un valor: " << endl;
                         cin >> nombre_ingresado;
                         std::this_thread::sleep_for(1500ms);
-
-                        estado = false;
                         i = 0;
                     }
                     else
@@ -317,19 +401,20 @@ int main()
                         datos[i].nombre = nombre_ingresado;
 
                         cout << "Marca: " << endl;
-                        cin >> marca_ingresada;
+                        marca_ingresada = busquedaNombre();
                         datos[i].marca = marca_ingresada;
 
                         cout << "Precio: " << endl;
-                        cin >> precio_ingresado;
+                        precio_ingresado = integerPositivo();
                         datos[i].precio = precio_ingresado;
 
                         cout << "Cantidad: " << endl;
-                        cin >> cantidad_ingresada;
+                        cantidad_ingresada = integerPositivo();
                         datos[i].cantidades = cantidad_ingresada;
 
                         datos[i].existe = true;
                         contador++;
+                        estado = false;
                     }
                     i++;
                 }
@@ -337,29 +422,35 @@ int main()
                 break;
 
             case 2:
+
                 cout << endl
                      << "Listado de vinos: " << endl
                      << endl;
                 for (int i = 0; i <= contador; i++)
                 {
-                    cout << datos[i].nombre << endl;
-                    cout << "____________" << endl;
+                    if (datos[i].existe)
+                    {
+                        cout << datos[i].nombre << endl;
+                        cout << "____________" << endl;
+                    }
                 }
+
                 cout << "Seleccione el nombre del vino a remover: " << endl;
-                cin >> rm;
+                rm = busquedaNombre();
                 for (int i = 0; i <= contador; i++)
                 {
                     if (datos[i].nombre == rm)
                     {
                         datos[i].existe = false;
-                        std::this_thread::sleep_for(1000ms);
+                        cout << "Vino " << datos[i].nombre << " excluído de stock" << endl;
+                        std::this_thread::sleep_for(1500ms);
                     }
                 }
                 break;
 
             case 3:
                 cout << "Ingrese el código del producto: " << endl;
-                cin >> c;
+                c = codeIngreso();
                 for (int i = 0; i <= contador; i++)
                 {
                     if (datos[i].codigo == c)
@@ -385,9 +476,11 @@ int main()
                         cout << "Fecha de ingreso al supermercado de " << datos[i].nombre << "\nMes de ingreso: " << datos[i].ingreso.mes << "\nAño: " << datos[i].ingreso.anio << endl;
                         cout << "Ingrese la nueva fecha de ingreso: " << endl;
                         cout << "Mes de ingreso: " << endl;
-                        cin >> datos[i].ingreso.mes;
+                        x = mesIngreso();
                         cout << "Año de ingreso: " << endl;
-                        cin >> datos[i].ingreso.anio;
+                        y = anioIngreso();
+                        datos[i].ingreso.mes = x;
+                        datos[i].ingreso.anio = y;
                         cout << "Nueva fecha de ingreso del vino " << datos[i].nombre << ": " << datos[i].ingreso.mes << "/" << datos[i].ingreso.anio << endl;
                         std::this_thread::sleep_for(3000ms);
                     }

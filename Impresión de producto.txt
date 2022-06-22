@@ -1,0 +1,7 @@
+Impresion del vino codigo: 4
+Nombre: Dada
+Marca: Malbec
+Tipo: Tinto
+Precio de venta: 554
+Fecha de Ingreso: 12/2015
+Cantidad en stock: 2342
