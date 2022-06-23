@@ -1,9 +1,9 @@
 Impresion del vino codigo: 1
-Nombre: Helios
-Marca: Frey
+Nombre: Alma Mora
+Marca: Malbec
 Tipo: Tinto
 Precio de venta: 707
-Cantidad en stock: 23
+Cantidad en stock: 1493
 ______________________________
 Impresion del vino codigo: 2
 Nombre: Portillo
@@ -61,11 +61,4 @@ Tipo: Rosado
 Precio de venta: 1092
 Cantidad en stock: 403
 ______________________________
-Impresion del vino codigo: 10
-Nombre: Aime
-Marca: Red Blend
-Tipo: Rosado
-Precio de venta: 943
-Cantidad en stock: 1023
-______________________________
-La suma de precio de los vinos es: 7748
+La suma de precio de los vinos es: 6805

@@ -63,7 +63,7 @@ string codeIngreso()
     while (true)
     {
         cin >> cod;
-        if (cod.find_first_not_of("1") == std::string::npos)
+        if (cod.find_first_not_of("12345678910") == std::string::npos)
         {
             return cod;
             break;
@@ -103,16 +103,16 @@ int anioIngreso()
 }
 
 int integerPositivo(){
-    int p;
+    int a;
     while (true)
     {
-        cin >>p;
-        if (p>=0)
+        cin >>a;
+        if (a>=0)
         {
-            return p;
+            return a;
             break;
         }
-        cout<<" Ingrese un valor positvio porfavor "<<endl;
+        cout<<" Ingrese un valor positivo porfavor "<<endl;
     }
     
 }
@@ -293,7 +293,7 @@ int main()
             }
 
             cout << "Ingrese el nombre del proveedor" << endl;
-            cin >> p;
+            p = busquedaNombre();
             for (int i = 0; i <= contador; i++)
             {
                 if (datos[i].proveedor.nombre == p)
@@ -457,7 +457,7 @@ int main()
                     {
                         cout << "Precio actual del vino " << datos[i].nombre << ": " << datos[i].precio << endl;
                         cout << "Ingrese el nuevo precio: " << endl;
-                        cin >> p;
+                        p = integerPositivo();
                         datos[i].precio = p;
                         cout << "Nuevo precio del vino " << datos[i].nombre << " , " << datos[i].precio << endl;
                         std::this_thread::sleep_for(3000ms);
@@ -467,7 +467,7 @@ int main()
 
             case 4:
                 cout << "Ingrese el codigo del vino a modificar su fecha de ingreso: " << endl;
-                cin >> c;
+                c = codeIngreso();
 
                 for (int i = 0; i <= contador; i++)
                 {

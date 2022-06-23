@@ -1,7 +1,7 @@
-Impresion del vino codigo: 4
-Nombre: Dada
-Marca: Malbec
-Tipo: Tinto
-Precio de venta: 554
+Impresion del vino codigo: 6
+Nombre: Santa Julia
+Marca: Chenin
+Tipo: Blanco
+Precio de venta: 820
 Fecha de Ingreso: 12/2015
-Cantidad en stock: 2342
+Cantidad en stock: 562
